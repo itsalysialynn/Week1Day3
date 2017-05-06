@@ -20,35 +20,26 @@ var library = {
                       name: "Other Playlist",
                       tracks: ["t03"]
                     }
-             }
-}
+             },
 
-// prints a list of all playlists, in the form:
-// p01: Coding Music - 2 tracks
-// p02: Other Playlist - 1 tracks
+  printPlaylists: function() {
+    for (var id in this.playlists) {  
+    console.log(this.playlists[id].id + ": " + this.playlists[id].name + " - " + this.playlists[id].tracks.length); 
+    }
+  },
 
-var printPlaylists = function () {
-  for (var id in library.playlists) {  
-    console.log(library.playlists[id].id + ": " + library.playlists[id].name + " - " + library.playlists[id].tracks.length); 
-  }
-}
-
-printPlaylists(library);
-
-
-// prints a list of all tracks, in the form:
-// t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
-// t02: Model View Controller by James Dempsey (WWDC 2003)
-// t03: Four Thirty-Three by John Cage (Woodstock 1952)
-
-var printTracks = function () {
-  for (var id in library.tracks) {
-    console.log(library.tracks[id].id + ": " + library.tracks[id].name + " by " + library.tracks[id].artist + " (" + library.tracks[id].album + ")")
+  printTracks: function () {
+  for (var id in this.tracks) {
+    console.log(this.tracks[id].id + ": " + this.tracks[id].name + " by " + this.tracks[id].artist + " (" + this.tracks[id].album + ")")
   } 
 
-} 
+  }, 
 
-printTracks(library);
+  
+}
+
+library.printPlaylists();
+library.printTracks();
 
 
 // prints a list of tracks for a given playlist, in the form:
@@ -69,7 +60,7 @@ var printPlaylist = function (mainLibrary, playlistId) {
 
   for (var i = 0; i < playlistTracks.length; i++) {
      for (var trackId in allLibraryTracks) {
-        if (playlistTracks[j] === trackId) {
+        if (playlistTracks[i] === trackId) {
           console.log(allLibraryTracks[trackId].id + ": " + allLibraryTracks[trackId].name + " by " +allLibraryTracks[trackId].artist + " (" + allLibraryTracks[trackId].album + ")");
         }
       }
