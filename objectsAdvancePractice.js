@@ -25,14 +25,13 @@ var companySalesData = [
 var result = {};
 
 function calculateSales(companySalesData) {
-  var totalsales = 0;
-  var totaltax = 0;
+  var totalSales = 0;
+  var totalTax = 0;
 
   for (var i = 0; i < companySalesData.sales.length; i++) {
     totalSales += companySalesData.sales[i];
-  }
 
-  switch(companySalesData[i].province) {
+    switch(companySalesData[i].province) {
     case "AB":
       totalSalesTax = totalSales * salesTaxRates.AB;
       break;
@@ -43,54 +42,16 @@ function calculateSales(companySalesData) {
 
     case "SK":
       totalSales = totalSales * salesTaxRates.SK;
+    }
   }
-  
   if (result.hasOwnProperty(companySalesData.name)) {
-    result[companySalesData.name].totalSales += totalSales
-    result[companySalesData.name].totalSalesTax += totalSalesTax
+    result[companySalesData.name].totalSales += totalSales;
+    result[companySalesData.name].totalSalesTax += totalSalesTax;
   } else {
-    result[companySalesData.name] = = {'totalSales': totalSales, 'totalSalesTax': totalSalesTax}
+    result[companySalesData.name] = {'totalSales': totalSales, 'totalSalesTax': totalSalesTax};
   }
 }
 
-for (i = 0; i < companySalesData.length; i++) {
- calculateSales(companySalesData[i]);
-};
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-// function calculateSales(index) {
-
-//   var sum = 0;
-//   for (var i = 0; i < companySalesData[index].sales.length; i++) {
-//     sum += companySalesData[index].sales[i];
-//    } //first for bracket
-// return sum; 
-// } 
-
-// console.log(results);
-
-/* Expected Results:
-{
-  Telus: {
-    totalSales: 1300
-    totalTaxes: 144
-  },
-  Bombardier: {
-    totalSales: 800,
-    totalTaxes: 40
-  }
+for (var i = 0; i < companySalesData.length; i++) {
+  calculateSales(companySalesData[i]);
 }
-*/
