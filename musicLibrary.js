@@ -23,20 +23,17 @@ var library = {
              },
 
   printPlaylists: function() {
-    for (var id in this.playlists) {  
-    console.log(this.playlists[id].id + ": " + this.playlists[id].name + " - " + this.playlists[id].tracks.length); 
+    for (var id in this.playlists) {
+      console.log(this.playlists[id].id + ": " + this.playlists[id].name + " - " + this.playlists[id].tracks.length);
     }
   },
 
   printTracks: function () {
-  for (var id in this.tracks) {
-    console.log(this.tracks[id].id + ": " + this.tracks[id].name + " by " + this.tracks[id].artist + " (" + this.tracks[id].album + ")")
-  } 
-
-  }, 
-
-  
-}
+    for (var id in this.tracks) {
+      console.log(this.tracks[id].id + ": " + this.tracks[id].name + " by " + this.tracks[id].artist + " (" + this.tracks[id].album + ")");
+    }
+  }
+};
 
 library.printPlaylists();
 library.printTracks();
@@ -48,25 +45,24 @@ library.printTracks();
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 
 var printPlaylist = function (mainLibrary, playlistId) {
-  var input = playlistId
+  var input = playlistId;
   for (var id in mainLibrary.playlists) {
     if (id === input) {
-      console.log (mainLibrary.playlists[input].id + ": " + mainLibrary.playlists[input].name + " - " + mainLibrary.playlists[input].tracks.length);
-    } 
-  } 
+      console.log(mainLibrary.playlists[input].id + ": " + mainLibrary.playlists[input].name + " - " + mainLibrary.playlists[input].tracks.length);
+    }
+  }
 
   var playlistTracks = mainLibrary.playlists[input].tracks;
   var allLibraryTracks = library.tracks;
 
   for (var i = 0; i < playlistTracks.length; i++) {
-     for (var trackId in allLibraryTracks) {
-        if (playlistTracks[i] === trackId) {
-          console.log(allLibraryTracks[trackId].id + ": " + allLibraryTracks[trackId].name + " by " +allLibraryTracks[trackId].artist + " (" + allLibraryTracks[trackId].album + ")");
-        }
+    for (var trackId in allLibraryTracks) {
+      if (playlistTracks[i] === trackId) {
+        console.log(allLibraryTracks[trackId].id + ": " + allLibraryTracks[trackId].name + " by " + allLibraryTracks[trackId].artist + " (" + allLibraryTracks[trackId].album + ")");
       }
+    }
   }
-
-} 
+};
 
 printPlaylist(library, 'p01');
 
@@ -79,29 +75,29 @@ var addTrackToPlaylist = function (trackId, playlistId) {
   
   var tracks = library.playlists[playlistId].tracks;
   tracks.push(trackId);
-}
+};
 
-addTrackToPlaylist("t01", "p02")
+addTrackToPlaylist("t01", "p02");
 
 // generates a unique id
 // (use this for addTrack and addPlaylist)
 
 var uid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+};
 
 // adds a track to the library
 
 var addTrack = function (name, artist, album) {
   var newId = uid();
   library.tracks[newId] = {
-    id: newId, 
-    name: name, 
+    id: newId,
+    name: name,
     artist: artist,
     album: album
     
   };
-}
+};
 
 addTrack("Name", "Artist", "Album");
 
@@ -111,9 +107,9 @@ var addPlaylist = function (name) {
   var newId = uid();
   library.playlists[newId] = {
     id: newId,
-    name: name, 
+    name: name
   };
-}
+};
 
 addPlaylist("My playlist");
 
