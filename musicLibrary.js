@@ -38,12 +38,10 @@ var library = {
 library.printPlaylists();
 library.printTracks();
 
-
 // prints a list of tracks for a given playlist, in the form:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
-
 var printPlaylist = function (mainLibrary, playlistId) {
   var input = playlistId;
   for (var id in mainLibrary.playlists) {
@@ -66,9 +64,7 @@ var printPlaylist = function (mainLibrary, playlistId) {
 
 printPlaylist(library, 'p01');
 
-
 // adds an existing track to an existing playlist
-
 var addTrackToPlaylist = function (trackId, playlistId) {
   var id = trackId;
   var playlist = playlistId;
@@ -81,13 +77,11 @@ addTrackToPlaylist("t01", "p02");
 
 // generates a unique id
 // (use this for addTrack and addPlaylist)
-
 var uid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 };
 
 // adds a track to the library
-
 var addTrack = function (name, artist, album) {
   var newId = uid();
   library.tracks[newId] = {
@@ -102,7 +96,6 @@ var addTrack = function (name, artist, album) {
 addTrack("Name", "Artist", "Album");
 
 // adds a playlist to the library
-
 var addPlaylist = function (name) {
   var newId = uid();
   library.playlists[newId] = {
