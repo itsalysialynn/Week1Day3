@@ -12,4 +12,3 @@ function countLetters(words) {
   }
   return output;
 }
-
